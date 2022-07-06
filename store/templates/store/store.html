@@ -1,0 +1,95 @@
+{% extends "store/base.html" %}
+    {% block store %}
+            <div class="section row">
+                {% comment %} {% for item in shops %}
+                <div class="content col-lg-3">
+                    <p>{{item.name}}</p>
+
+                    <div class="image">
+                    </div>
+
+                    <h2 class="inline">${{item.price}}</h2>
+                    <div class="desc"><p>Item description here</p></div>
+                    <p>Quantity: {{item.desc}}</p>
+                    <button>add to cart</button>
+                </div>
+                {% endfor %} {% endcomment %}
+                {% for item in shops %}
+                <div class="content col-lg-3">
+
+                    {% comment %} <div class="image"> {% endcomment %}
+                        
+                        <a href="product/{{item.id}}"><img class="image"></a>
+                        
+                    {% comment %} </div> {% endcomment %}
+                    <a class="product-name" href="product/{{item.id}}">{{item.name}}</a>
+
+                    <p class="price">${{item.price}}</p>
+                    {% comment %} <div class="desc">
+                        <p>{{item.desc}}</p>
+                    </div> {% endcomment %}
+                    <form method="POST" action="{% url 'add-to-cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="cart-item" value="{{product.id}}">
+                        <button type="submit" id="movfe-me" class="button">Add to cart</button>
+                    </form>
+                    {% comment %} <button>add to cart</button> {% endcomment %}
+                </div>
+                {% endfor %}
+                <div class="relative pagination">
+
+                    {% if shops.has_previous %}
+                    <h5 class="paginate">Page {{ shops.number }} of {{shops.paginator.num_pages}}</h5>
+    
+                        <a class="first" href="?page=1">&laquo First</a>
+                        <a class="previous" href="?page={{shops.previous_page_number}}">&lt Previous</a>
+                    {% endif %}
+                    {% if shops.has_next %}
+                    <h5 class="paginate">Page {{ shops.number }} of {{shops.paginator.num_pages}}</h5>
+    
+                        <a class="next" href="?page={{shops.next_page_number}}">Next &gt </a>
+                        <a class="last" href="?page={{shops.paginator.num_pages}}">Last &raquo </a>
+                    {% endif %}
+                </div>
+            </div>
+{% comment %} 
+                <div class="content col-lg-3">
+                    <div class="image">
+                        <p>item here</p>
+                    </div>                    <h2 class="inline">$25</h2>
+                    <div class="desc"><p>Item description here</p></div>
+                    <p>Quantity: 4</p>
+                    <button>add to cart</button>
+
+                </div>
+                <div class="content col-lg-3">
+                    <div class="image">
+                        <p>item here</p>
+                    </div>                    <h2 class="inline">$25</h2>
+                    <div class="desc"><p>Item description here</p></div>
+                    <p>Quantity: 4</p>
+                    <button>add to cart</button>
+
+                </div>
+            </div>
+            <div class="row section">
+                <div class="content col-lg-3">
+                    <div class="image">
+                        <p>item here</p>
+                    </div>                    <h2 class="inline">$25</h2>
+                    <div class="desc"><p>Item description here</p></div>
+                    <p>Quantity: 4</p>
+                    <button>add to cart</button>
+
+                </div>
+                <div class="content col-lg-3">
+                    <div class="image">
+                        <p>item here</p>
+                    </div>
+                    <h2 class="inline">$25</h2>
+                    <div class="desc"><p>Item description here</p></div>
+                    <p>Quantity: 4</p>
+
+                    <button>add to cart</button>
+                </div> {% endcomment %}
+            {% endblock %}

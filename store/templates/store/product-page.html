@@ -1,0 +1,27 @@
+{% extends "store/base.html" %}
+{% block cart %}
+
+<div class="flex">
+    <div class="col-4">
+        <div class="image"></div>
+        <form method="POST" action="{% url 'add-to-cart' %}">
+            {% csrf_token %}
+            <input type="hidden" name="cart-item" value="{{product.id}}">
+            <button type="submit" id="move-me" class="button">Add to cart</button>
+        </form>
+    </div>
+    <div class="flex-fcol product-box">
+        <div class="col-f6 product-name">
+            <p>{{product.name}}</p>
+        </div>
+        <div class="col-d4 price">
+            <p>${{product.price}}</p>
+        </div>
+        <div class="col-9f desc">
+            <p>{{product.desc}}</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
