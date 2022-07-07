@@ -1,6 +1,6 @@
 {% extends "store/base.html" %}
 {% block shop-my %}
-<form action="{% url 'add-product' %}" method="POST" class="fledx-col form" novalidate>
+<form action="{% url 'add-product' %}" method="POST" class="flex-col form" novalidate>
     {% csrf_token %}
     <label for="name">Product Name</label>
     <input type="text" id="name" name="name">
