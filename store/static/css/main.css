@@ -13,7 +13,9 @@ html, body{
     position:relative; top: 4px; left: 253px;
 
 }
-
+.hidden{
+    display: none;
+}
 input[type="text"]{
     border-radius: .4rem;
 }
@@ -29,10 +31,10 @@ button[type="submit"]{
 
 }
 .button{
-    border-radius: 20px;
-    background-color: rgb(255, 246, 115);
+    border-radius: 7px;
+    /* background-color: rgb(255, 246, 115); */
     background-color: rgb(40, 48, 133);
-    padding: 1rem;
+    padding: .75rem;
     color: white;
 }
 
@@ -262,19 +264,29 @@ button[type="submit"]{
 
 .flex-col{
     display: flex;
-    flex-direction: column;
 }
 /* .flex-col > *{
     margin-block-end: -16rem;
 } */
+#flex{
+    display: flex;
+}
 .form{
     width: 20%;
     margin-inline: 40px;
+}
+.form *{
+    margin:.25rem;
+    display: flex;
+}
+.form-field{
+    margin-block: .5rem;
 }
 
 #name{
     /* text-align: center; */
     padding: .25rem 1rem;
+    width: 100%;
 }
 #price{
     width: 30%;
@@ -282,7 +294,8 @@ button[type="submit"]{
 }
 #desc{
     padding: .45rem 1rem;
-    height: 10rem;
+    height: 20rem;
+    width: 100%;
 }
 
 
